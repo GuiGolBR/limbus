@@ -7,7 +7,7 @@ const warning = document.getElementById("notAuthorized");
 
 const { data: sessionData } = await getSession();
 if (!sessionData?.session) {
-  window.location.href = "https://guigolbr.github.io/limbus/login.html";
+  window.location.href = "./login.html";
   throw new Error("Not logged in");
 }
 
@@ -18,7 +18,7 @@ if (role !== "admin") {
   app.style.display = "none";
   warning.style.display = "block";
   setTimeout(() => {
-    window.location.href = "https://guigolbr.github.io/limbus/index.html";
+    window.location.href = "./index.html";
   }, 1500);
   throw new Error("Not authorized");
 }
@@ -28,11 +28,11 @@ warning.style.display = "none";
 
 document.getElementById("logoutBtn").onclick = async () => {
   await signOut();
-  window.location.href = "https://guigolbr.github.io/limbus/login.html";
+  window.location.href = "./login.html";
 };
 
 document.getElementById("backBtn").onclick = () => {
-  window.location.href = "https://guigolbr.github.io/limbus/index.html";
+  window.location.href = "./index.html";
 };
 
 let editingId = null;

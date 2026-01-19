@@ -38,12 +38,12 @@
     import { loadWishlist, renderWishlist } from "./js/wishlist.js";
 
     const { data } = await getSession();
-    if (!data.session) window.location.href = "https://guigolbr.github.io/limbus/login.html";
+    if (!data.session) window.location.href = "./login.html";
     const user = data.session.user;
 
     document.getElementById("logoutBtn").onclick = async () => {
       await signOut();
-      window.location.href = "https://guigolbr.github.io/limbus/login.html";
+      window.location.href = "./login.html";
     };
 
     const role = await getUserRole(user.id);
@@ -65,7 +65,7 @@
     };
 
     document.getElementById("adminBtn").onclick = () => {
-      window.location.href = "https://guigolbr.github.io/limbus/admin.html";
+      window.location.href = "./admin.html";
     };
 
     const identities = await loadIdentities();

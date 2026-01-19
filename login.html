@@ -28,7 +28,7 @@
     document.getElementById("loginBtn").onclick = async () => {
       const { error } = await signIn(emailInput.value, passwordInput.value);
       message.textContent = error ? error.message : "Logged in! Redirecting...";
-      if (!error) window.location.href = "https://guigolbr.github.io/limbus/index.html";
+      if (!error) window.location.href = "./index.html";
     };
 
     document.getElementById("signupBtn").onclick = async () => {
