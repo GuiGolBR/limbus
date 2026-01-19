@@ -1,2 +1,2 @@
 # limbus
-Limbus Indentity website
+Limbus Identity website
