@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Limbus Company Tools - Identities</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header>
+    <h1>Limbus Company Tools – Identities</h1>
+    <div class="header-actions">
+      <button id="showIdentitiesBtn">Identities</button>
+      <button id="showWishlistBtn">Wishlist</button>
+      <button id="adminBtn" class="hidden">Admin Panel</button>
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="search-container">
+      <input id="identitySearch" type="text" placeholder="Search identities..." />
+    </div>
+
+    <section class="identities panel active" id="identitiesPanel">
+      <h2>All Identities</h2>
+      <div id="identityList" class="flex"></div>
+    </section>
+
+    <section class="wishlist panel" id="wishlistPanel">
+      <h2>My Wishlist</h2>
+      <div id="wishlistList" class="list"></div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { getSession, signOut, getUserRole } from "./js/auth.js";
+    import { loadIdentities, renderIdentities } from "./js/identities.js";
+    import { loadWishlist, renderWishlist } from "./js/wishlist.js";
+
+    const { data } = await getSession();
+    if (!data.session) window.location.href = "login.html";
+    const user = data.session.user;
+
+    document.getElementById("logoutBtn").onclick = async () => {
+      await signOut();
+      window.location.href = "login.html";
+    };
+
+    const role = await getUserRole(user.id);
+    if (role === "admin") {
+      document.getElementById("adminBtn").classList.remove("hidden");
+    }
+
+    const identitiesPanel = document.getElementById("identitiesPanel");
+    const wishlistPanel = document.getElementById("wishlistPanel");
+
+    document.getElementById("showIdentitiesBtn").onclick = () => {
+      identitiesPanel.classList.add("active");
+      wishlistPanel.classList.remove("active");
+    };
+
+    document.getElementById("showWishlistBtn").onclick = () => {
+      wishlistPanel.classList.add("active");
+      identitiesPanel.classList.remove("active");
+    };
+
+    document.getElementById("adminBtn").onclick = () => {
+      window.location.href = "admin.html";
+    };
+
+    const identities = await loadIdentities();
+    const wishlistIds = await loadWishlist(user.id);
+
+    renderIdentities(identities, wishlistIds, user.id);
+    renderWishlist(identities, wishlistIds, user.id);
+
+    document.addEventListener("wishlist-updated", () => {
+      renderIdentities(identities, wishlistIds, user.id);
+      renderWishlist(identities, wishlistIds, user.id);
+    });
+
+    const searchInput = document.getElementById("identitySearch");
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      renderIdentities(identities, wishlistIds, user.id, query);
+      renderWishlist(identities, wishlistIds, user.id, query);
+    });
+  </script>
+</body>
+</html>

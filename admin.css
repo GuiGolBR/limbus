@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0f0f14;
+  color: #eaeaf0;
+}
+
+header {
+  background: #1b1b24;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header button {
+    background: #444444;
+    color: white;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.form-section,
+.list-section {
+  background: #1b1b24;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+input,select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  background: #ca9b00;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  color: black;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+
+.card {
+  background: #2a2a36;
+  border-radius: 10px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 0.9rem;
+  margin: 0.4rem 0;
+}
+
+.card .actions {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.card button {
+  flex: 1;
+  background: #444;
+  color: white;
+}
+
+.card button.delete {
+  background: #ff6b6b;
+}
+
+#saveBtn {
+    width: 100%;
+}
+
+.image-preview {
+  max-width: 200px;
+  margin-top: 10px;
+  border-radius: 6px;
+  margin-bottom:10px;
+  justify-self: center;
+}
+
+.toast {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  display: none;
+}
+
+.toast.success {
+  background: #1f8f3a;
+  color: white;
+}
+
+.toast.error {
+  background: #b91c1c;
+  color: white;
+}
+
+.image-wrap {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.image-wrap > img:first-child {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: auto;
+  border-radius: 8px;
+}
+
+.rarity-overlay {
+  position: absolute;
+  inset: -8px;
+  margin-top: -4px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  pointer-events: none;
+  z-index: 2;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin – Manage Identities</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <div id="notAuthorized" class="not-authorized" style="display:none;">
+    <h2>⛔ Access Denied</h2>
+    <p>You do not have permission to access this page.</p>
+  </div>
+
+  <div id="adminApp" style="display:none;">
+
+    <header>
+      <h1>Admin Panel</h1>
+      <div>
+        <button id="backBtn">← Back</button>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="form-section">
+        <h2 id="formTitle">Add New Identity</h2>
+        <input id="nameInput" placeholder="Name" />
+        <select id="sinnerInput">
+            <option value="">Select Sinner</option>
+            <option value="1">Yi Sang</option>
+            <option value="2">Faust</option>
+            <option value="3">Don Quixote</option>
+            <option value="4">Ryōshū</option>
+            <option value="5">Meursault</option>
+            <option value="6">Hong Lu</option>
+            <option value="7">Heathcliff</option>
+            <option value="8">Ishmael</option>
+            <option value="9">Rodion</option>
+            <option value="11">Sinclair</option>
+            <option value="12">Outis</option>
+            <option value="13">Gregor</option>
+            </select>
+        <select id="rarityInput">
+            <option value="">Select Rarity</option>
+            <option value="1">0</option>
+            <option value="2">00</option>
+            <option value="3">000</option>
+        </select>
+        <input id="imageInput" placeholder="Image URL" />
+
+        <img id="imagePreview" class="image-preview" style="display:none;" />
+
+        <button id="saveBtn">Save</button>
+
+        <div id="toast" class="toast"></div>
+        </section>
+
+      <section class="list-section">
+        <div class="search-container">
+            <input id="adminSearch" type="text" placeholder="Search identities..." />
+        </div>
+
+        <h2>All Identities</h2>
+        <div id="adminIdentityList" class="grid"></div>
+      </section>
+    </main>
+
+  </div>
+
+  <script type="module" src="./js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0f0f14;
+  color: #eaeaf0;
+}
+
+header {
+  background: #1b1b24;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.header-actions button {
+  margin-left: 0.4rem;
+}
+
+main {
+  padding: 1rem;
+}
+
+.panel {
+  display: none;
+  background: #1b1b24;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.panel.active {
+  display: block;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.8rem;
+}
+
+.card {
+  position: relative; /* for the overlay positioning */
+  border-radius: 10px;
+  padding: 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.card .wishlist-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 3;
+  pointer-events: none; /* prevents blocking hover events when hidden */
+  border-radius: 10px;
+  filter:none;
+}
+
+.card:hover .content {
+    filter:blur(2px)
+}
+
+.card:hover .wishlist-modal {
+  opacity: 1;
+  pointer-events: auto; /* enable button clicks when shown */
+  filter:none;
+}
+
+.card .wishlist-modal button {
+  width: 80%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: #ca9b00;
+  color: black;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  filter:none;
+}
+
+.card h3 {
+  font-size: 0.9rem;
+  margin-top: -80px;
+  margin-left: 5px;
+  width: 80%;
+  z-index: 3;
+  align-self: center;
+  justify-self: center;
+  position:relative;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wishlist-item {
+  background: #2a2a36;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wishlist-item button {
+  background: #ff6b6b;
+  border: none;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+button {
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.image-wrap {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.image-wrap > img:first-child {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: auto;
+  border-radius: 8px;
+}
+
+.rarity-overlay {
+  position: absolute;
+  inset: -8px;
+  margin-top: -4px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sinner-section {
+  margin-bottom: 50px;
+}
+
+.sinner-title {
+  margin: 0.5rem 0 0.4rem;
+  font-size: 1.1rem;
+  color: white;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.2rem;
+}
+
+/* Make sure the grid inside each sinner section is horizontal */
+.sinner-section .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.8rem;
+}
+
+#identityList {
+    flex-direction: column;
+}
+
+.search-container {
+  margin-bottom: 1rem;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  border: 0px solid #555;
+  background: #1b1b24;
+  color: #eaeaf0;
+  font-size: 0.95rem;
+}
+
+.search-container input::placeholder {
+  color: #888;
+}
