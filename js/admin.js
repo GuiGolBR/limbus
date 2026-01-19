@@ -32,7 +32,7 @@ document.getElementById("logoutBtn").onclick = async () => {
 };
 
 document.getElementById("backBtn").onclick = () => {
-  window.location.href = ".`/limbus/index.html";
+  window.location.href = "./limbus/index.html";
 };
 
 let editingId = null;
