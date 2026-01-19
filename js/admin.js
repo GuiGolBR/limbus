@@ -7,7 +7,7 @@ const warning = document.getElementById("notAuthorized");
 
 const { data: sessionData } = await getSession();
 if (!sessionData?.session) {
-  window.location.href = "../login.html";
+  window.location.href = "./limbus/login.html";
   throw new Error("Not logged in");
 }
 
@@ -18,7 +18,7 @@ if (role !== "admin") {
   app.style.display = "none";
   warning.style.display = "block";
   setTimeout(() => {
-    window.location.href = "../index.html";
+    window.location.href = "./limbus/index.html";
   }, 1500);
   throw new Error("Not authorized");
 }
@@ -28,11 +28,11 @@ warning.style.display = "none";
 
 document.getElementById("logoutBtn").onclick = async () => {
   await signOut();
-  window.location.href = "../login.html";
+  window.location.href = "./limbus/login.html";
 };
 
 document.getElementById("backBtn").onclick = () => {
-  window.location.href = "../index.html";
+  window.location.href = ".`/limbus/index.html";
 };
 
 let editingId = null;
